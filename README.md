@@ -1,4 +1,4 @@
-# Resocoder Repo Viewer
+# Reso Coder GitHub Repo Viewer
 
 Production-grade project developed during the Reso Coder Academy Flutter Bootcamp.
 
