@@ -1,5 +1,6 @@
 name: resocoder_repo_viewer
-description: Production-grade project developed during the Reso Coder Academy Flutter Bootcamp.
+description: Production-grade project developed during the Reso Coder Academy
+  Flutter Bootcamp.
 publish_to: "none"
 version: 1.0.0+1
 
@@ -9,27 +10,27 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  oauth2: ^2.0.0
-  flutter_secure_storage: ^4.2.0
-  dartz: ^0.10.0-nullsafety.2
-  dio: ^4.0.0
-  flutter_hooks: ^0.16.0
   hooks_riverpod:
     git:
       url: https://github.com/rrousselGit/river_pod.git
       ref: 147be70df096015af0633456a951d8f2f9c66dc9
       path: packages/hooks_riverpod
-  freezed_annotation: ^0.14.2
-  webview_flutter: ^2.0.8
-  flash: ^2.0.0
   auto_route: ^2.2.0
+  dartz: ^0.10.0-nullsafety.2
+  dio: ^4.0.0
+  flash: ^2.0.0
+  flutter_hooks: ^0.16.0
+  flutter_secure_storage: ^4.2.0
+  freezed_annotation: ^0.14.2
+  oauth2: ^2.0.0
+  webview_flutter: ^2.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  auto_route_generator: ^2.1.0
   build_runner: ^2.0.4
   freezed: ^0.14.2
-  auto_route_generator: ^2.1.0
   lint: ^1.5.3
 
 dependency_overrides:

@@ -5,7 +5,7 @@ linter:
     always_put_required_named_parameters_first: false
     avoid_classes_with_only_static_members: false
     avoid_print: false
-    sort_constructors_first: true
+    sort_constructors_first: false
     prefer_single_quotes: true
     public_member_api_docs: false
     always_specify_types: false

@@ -4,11 +4,11 @@ Production-grade project developed during the Reso Coder Academy Flutter Bootcam
 
 It's a mobile Github repository viewer
 
-## Snippets
+## Code Snippets
 
 ### Build automatic code
 
-```dart
+```sh
 flutter pub run build_runner watch --delete-conflicting-outputs
 
 ```
