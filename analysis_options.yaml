@@ -12,6 +12,14 @@ linter:
     lines_longer_than_80_chars: true
 
 analyzer:
+  errors:
+    missing_return: error
+    must_be_immutable: error
+    must_call_super: error
+    invalid_use_of_protected_member: error
+    parameter_assignments: error
+    sort_unnamed_constructors_first: ignore
+    sort_pub_dependencies: ignore
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
