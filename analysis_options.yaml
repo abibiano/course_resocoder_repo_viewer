@@ -1,16 +1,5 @@
 include: package:lint/analysis_options.yaml
 
-linter:
-  rules:
-    always_put_required_named_parameters_first: false
-    avoid_classes_with_only_static_members: false
-    avoid_print: false
-    sort_constructors_first: false
-    prefer_single_quotes: true
-    public_member_api_docs: false
-    always_specify_types: false
-    lines_longer_than_80_chars: true
-
 analyzer:
   errors:
     missing_return: error
@@ -23,3 +12,8 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+
+linter:
+  rules:
+    avoid_print: false
+    prefer_single_quotes: true
