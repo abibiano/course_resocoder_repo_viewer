@@ -1,5 +1,7 @@
 ### Dart ###
 # See https://www.dartlang.org/guides/libraries/private-files
+# Custom ignores
+.env
 
 # Files and directories created by pub
 .dart_tool/
