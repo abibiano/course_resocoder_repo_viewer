@@ -10,17 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hooks_riverpod:
-    git:
-      url: https://github.com/rrousselGit/river_pod.git
-      ref: 147be70df096015af0633456a951d8f2f9c66dc9
-      path: packages/hooks_riverpod
+  hooks_riverpod: ^1.0.0-dev.1
   auto_route: ^2.2.0
   dartz: ^0.10.0-nullsafety.2
   dio: ^4.0.0
   flash: ^2.0.0
   flutter_dotenv: ^5.0.0
-  flutter_hooks: ^0.16.0
+  flutter_hooks: ^0.17.0
   flutter_secure_storage: ^4.2.0
   freezed_annotation: ^0.14.2
   material_design_icons_flutter: ^5.0.5955-rc.1
@@ -37,15 +33,3 @@ dev_dependencies:
 
 assets:
   - .env
-
-dependency_overrides:
-  flutter_riverpod:
-    git:
-      url: https://github.com/rrousselGit/river_pod.git
-      ref: 147be70df096015af0633456a951d8f2f9c66dc9
-      path: packages/flutter_riverpod
-  riverpod:
-    git:
-      url: https://github.com/rrousselGit/river_pod.git
-      ref: 147be70df096015af0633456a951d8f2f9c66dc9
-      path: packages/riverpod

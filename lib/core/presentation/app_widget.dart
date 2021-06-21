@@ -14,37 +14,30 @@ final initializationProvider = FutureProvider<Unit>((ref) async {
 class AppWidget extends ConsumerWidget {
   final appRouter = AppRouter();
   @override
-  Widget build(BuildContext context, WidgetReference ref) {
-    // ref.listen<AuthState>(authNotifier, (state)) {}
-
-    return ProviderListener(
-      provider: initializationProvider,
-      onChange: (context, value) {},
-      child: ProviderListener<AuthState>(
-        provider: authNotifierProvider,
-        onChange: (context, state) {
-          state.maybeMap(
-            orElse: () {},
-            authenticated: (_) {
-              appRouter.pushAndPopUntil(
-                const StarredReposRoute(),
-                predicate: (route) => false,
-              );
-            },
-            unauthenticated: (_) {
-              appRouter.pushAndPopUntil(
-                const SignInRoute(),
-                predicate: (route) => false,
-              );
-            },
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen(initializationProvider, (_) {});
+    ref.listen<AuthState>(authNotifierProvider, (state) {
+      state.maybeMap(
+        orElse: () {},
+        authenticated: (_) {
+          appRouter.pushAndPopUntil(
+            const StarredReposRoute(),
+            predicate: (route) => false,
           );
         },
-        child: MaterialApp.router(
-          title: 'Resocoder Repo Viewer',
-          routerDelegate: appRouter.delegate(),
-          routeInformationParser: appRouter.defaultRouteParser(),
-        ),
-      ),
+        unauthenticated: (_) {
+          appRouter.pushAndPopUntil(
+            const SignInRoute(),
+            predicate: (route) => false,
+          );
+        },
+      );
+    });
+
+    return MaterialApp.router(
+      title: 'Resocoder Repo Viewer',
+      routerDelegate: appRouter.delegate(),
+      routeInformationParser: appRouter.defaultRouteParser(),
     );
   }
 }
