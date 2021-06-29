@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  hooks_riverpod: ^1.0.0-dev.1
+  hooks_riverpod: ^1.0.0-dev.2
   auto_route: ^2.2.0
   dartz: ^0.10.0-nullsafety.2
   dio: ^4.0.0
@@ -21,15 +21,16 @@ dependencies:
   freezed_annotation: ^0.14.2
   material_design_icons_flutter: ^5.0.5955-rc.1
   oauth2: ^2.0.0
-  webview_flutter: ^2.0.8
+  webview_flutter: ^2.0.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   auto_route_generator: ^2.1.0
-  build_runner: ^2.0.4
+  build_runner: ^2.0.5
   freezed: ^0.14.2
   lint: ^1.5.3
 
-assets:
-  - .env
+flutter:
+  assets:
+    - .env
