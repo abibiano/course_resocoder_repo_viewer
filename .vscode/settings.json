@@ -6,10 +6,15 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/*.freezed.dart": true,
-    "**/*.g.dart": false,
-    "**/.gitkeep": false
+    "**/*.g.dart": true,
+    "**/*.gr.dart": true,
+    "**/.gitkeep": true,
+    "**/.dart_tool": true,
+    "**/build": true,
+    ".flutter-plugins": true,
+    ".flutter-plugins-dependencies": true,
+    ".packages": true
   },
-  "explorerExclude.backup": null,
   "cSpell.words": [
     "Repos",
     "resocoder"

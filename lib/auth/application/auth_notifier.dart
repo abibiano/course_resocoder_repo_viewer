@@ -1,5 +1,5 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:resocoder_repo_viewer/auth/domain/auth_failure.dart';
 import 'package:resocoder_repo_viewer/auth/infrastructure/github_authenticator.dart';
 

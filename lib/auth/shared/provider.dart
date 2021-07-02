@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:resocoder_repo_viewer/auth/application/auth_notifier.dart';
 import 'package:resocoder_repo_viewer/auth/infrastructure/credential_storage/credential_storage.dart';
+import 'package:resocoder_repo_viewer/auth/infrastructure/credential_storage/secure_credential_storage.dart';
 import 'package:resocoder_repo_viewer/auth/infrastructure/github_authenticator.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:resocoder_repo_viewer/auth/infrastructure/credential_storage/secure_credential_storage.dart';
 
 final flutterSecureStorage = Provider((ref) => const FlutterSecureStorage());
 
