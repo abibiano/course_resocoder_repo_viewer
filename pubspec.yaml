@@ -15,12 +15,15 @@ dependencies:
   dio: ^4.0.0
   flash: ^2.0.0
   flutter_dotenv: ^5.0.0
-  flutter_riverpod: ^1.0.0-dev.2
+  flutter_riverpod: ^1.0.0-dev.3
   flutter_secure_storage: ^4.2.0
   freezed_annotation: ^0.14.2
   json_annotation: ^4.0.1
   material_design_icons_flutter: ^5.0.5955-rc.1
   oauth2: ^2.0.0
+  path: ^1.8.0
+  path_provider: ^2.0.2
+  sembast: ^3.1.0+2
   webview_flutter: ^2.0.9
 
 dev_dependencies:
