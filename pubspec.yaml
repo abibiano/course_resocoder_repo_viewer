@@ -15,7 +15,7 @@ dependencies:
   dio: ^4.0.0
   flash: ^2.0.0
   flutter_dotenv: ^5.0.0
-  flutter_riverpod: ^1.0.0-dev.3
+  flutter_riverpod: ^1.0.0-dev.5
   flutter_secure_storage: ^4.2.0
   freezed_annotation: ^0.14.2
   json_annotation: ^4.0.1
