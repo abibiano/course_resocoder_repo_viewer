@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:resocoder_repo_viewer/core/infrastructure/dio_extension.dart';
 import 'package:resocoder_repo_viewer/core/infrastructure/network_exceptions.dart';
 import 'package:resocoder_repo_viewer/core/infrastructure/remote_response.dart';
@@ -20,8 +19,6 @@ class StarredReposRemoteService {
   Future<RemoteResponse<List<GithubRepoDTO>>> getStarredReposPage(
     int page,
   ) async {
-    final token = dotenv.env['PERSONAL_TOKEN'] ?? '';
-    const accept = 'application/vnd.github.v3.html+json';
     final requestUri = Uri.https(
       'api.github.com',
       '/user/starred',
@@ -37,8 +34,6 @@ class StarredReposRemoteService {
         requestUri,
         options: Options(
           headers: {
-            'Authorization': 'bearer $token',
-            'Accept': accept,
             'If-None-Match': previousHeaders?.etag ?? '',
           },
         ),
