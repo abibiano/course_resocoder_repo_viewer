@@ -30,21 +30,15 @@ class OAuth2Interceptor extends Interceptor {
     if (errorResponse != null && errorResponse.statusCode == 401) {
       final credentials = await _authenticator.getSignedInCredentials();
 
-      credentials != null && credentials.canRefresh
-          ? await _authenticator.refresh(credentials)
-          : await _authenticator.clearCredentialsStorage();
-
-      await _authNotifier.checkAndUpdateAuthStatus();
-
-      final refreshedCredentials =
-          await _authenticator.getSignedInCredentials();
-
-      if (refreshedCredentials != null) {
+      if (credentials == null) {
+        await _authenticator.clearCredentialsStorage();
+        await _authNotifier.checkAndUpdateAuthStatus();
+        handler.next(err);
+      } else {
         handler.resolve(
           await _dio.fetch(
             errorResponse.requestOptions
-              ..headers['Authorization'] =
-                  'bearer ${refreshedCredentials.accessToken}',
+              ..headers['Authorization'] = 'bearer ${credentials.accessToken}',
           ),
         );
       }
