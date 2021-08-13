@@ -39,7 +39,11 @@ class StarredReposRemoteService {
         ),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 304) {
+        return RemoteResponse.notModified(
+          maxPage: previousHeaders?.link?.maxPage ?? 0,
+        );
+      } else if (response.statusCode == 200) {
         final headers = GithubHeaders.parse(response);
         await _headersCache.saveHeaders(requestUri, headers);
         final convertedDate = (response.data as List<dynamic>)
@@ -59,10 +63,6 @@ class StarredReposRemoteService {
         );
       } else if (e.response != null) {
         throw RestApiException(e.response?.statusCode);
-      } else if (e.error.statusCode == 304) {
-        return RemoteResponse.notModified(
-          maxPage: previousHeaders?.link?.maxPage ?? 0,
-        );
       } else {
         rethrow;
       }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:resocoder_repo_viewer/github/core/domain/github_repo.dart';
 
@@ -11,7 +12,16 @@ class RepoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(repo.fullName),
+      title: Text(repo.name),
+      subtitle: Text(
+        repo.description,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+      leading: CircleAvatar(
+        backgroundImage: CachedNetworkImageProvider(repo.owner.avatarUrl),
+        backgroundColor: Colors.transparent,
+      ),
     );
   }
 }
