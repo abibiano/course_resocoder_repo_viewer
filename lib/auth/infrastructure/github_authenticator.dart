@@ -32,7 +32,7 @@ class GithubAuthenticator {
   static final tokenEndpoint =
       Uri.parse('https://github.com/login/oauth/access_token');
   static final revocationEndpoint =
-      Uri.parse('https://api.github.com/application/$clientId/token');
+      Uri.parse('https://api.github.com/applications/$clientId/token');
   static final redirectUrl = Uri.parse('http://localhost:3000/callback');
 
   Future<Credentials?> getSignedInCredentials() async {
@@ -94,23 +94,23 @@ class GithubAuthenticator {
       final usernameAndPassword =
           stringToBase64.encode('$clientId:$clientSecret');
 
-      try {
-        await _dio.deleteUri(
-          revocationEndpoint,
-          data: {'access_token': accessToken},
-          options: Options(
-            headers: {
-              'Authorization': 'basic $usernameAndPassword',
-            },
-          ),
-        );
-      } on DioError catch (e) {
-        if (e.isNoConnectionError) {
-        } else {
-          rethrow;
-        }
-      }
+      await _dio.deleteUri(
+        revocationEndpoint,
+        data: {'access_token': accessToken},
+        options: Options(
+          headers: {
+            'Authorization': 'basic $usernameAndPassword',
+          },
+        ),
+      );
+
       return clearCredentialsStorage();
+    } on DioError catch (e) {
+      if (e.isNoConnectionError) {
+        return clearCredentialsStorage();
+      } else {
+        rethrow;
+      }
     } on PlatformException {
       return left(const AuthFailure.storage());
     }

@@ -24,7 +24,8 @@ dependencies:
   oauth2: ^2.0.0
   path: ^1.8.0
   path_provider: ^2.0.2
-  sembast: ^3.1.0+2
+  # sembast: ^3.1.0+2
+  sembast: ^3.0.2
   shimmer: ^2.0.0
   webview_flutter: ^2.0.9
 
