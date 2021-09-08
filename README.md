@@ -38,6 +38,12 @@ or watch command in order to keep the source code synced automatically:
 flutter packages pub run build_runner watch
 ```
 
+**Step 4:**
+
+Create an Github OAuth App on Github Settings / Developer settings / OAuth Apps with <http://localhost:8080> as Homepage URL
+
+Save the CLIENT_ID and CLIENT_SECRET in a .env file (see .env.sample file as example)
+
 ## Code Snippets
 
 ### Build automatic code
