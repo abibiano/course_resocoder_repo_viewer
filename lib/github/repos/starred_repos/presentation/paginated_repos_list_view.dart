@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:resocoder_repo_viewer/github/core/shared/providers.dart';
 import 'package:resocoder_repo_viewer/github/repos/starred_repos/presentation/repo_tile.dart';
 
+import 'failure_repo_tile.dart';
 import 'loading_repo_tile.dart';
 
 class PaginatedReposListView extends StatelessWidget {
@@ -24,7 +25,7 @@ class PaginatedReposListView extends StatelessWidget {
           ),
           itemBuilder: (context, index) {
             return state.map(
-              initial: (_) => Container(),
+              initial: (_) => RepoTile(repo: _.repos.entity[index]),
               loadInProgress: (_) {
                 if (index < _.repos.entity.length) {
                   return RepoTile(repo: _.repos.entity[index]);
@@ -35,7 +36,15 @@ class PaginatedReposListView extends StatelessWidget {
               loadSuccess: (_) => RepoTile(
                 repo: _.repos.entity[index],
               ),
-              loadFailure: (_) => Container(),
+              loadFailure: (_) {
+                if (index < _.repos.entity.length) {
+                  return RepoTile(repo: _.repos.entity[index]);
+                } else {
+                  return FailureRepoTile(
+                    failure: _.failure,
+                  );
+                }
+              },
             );
           },
         );
