@@ -4,6 +4,40 @@ Production-grade project developed during the Reso Coder Academy Flutter Bootcam
 
 It's a mobile Github repository viewer
 
+![Screenshot](doc/screenshots/screenshot.png)
+
+## How to Start
+
+**Step 1:**
+
+Download or clone this repo by using the link below:
+
+```sh
+https://github.com/abibiano/course_resocoder_repo_viewer.git
+```
+
+**Step 2:**
+
+Go to project root and execute the following command in console to get the required dependencies:
+
+```sh
+flutter pub get
+```
+
+**Step 3:**
+
+This project uses libraries that works with code generation, execute the following command to generate files:
+
+```sh
+flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+
+or watch command in order to keep the source code synced automatically:
+
+```sh
+flutter packages pub run build_runner watch
+```
+
 ## Code Snippets
 
 ### Build automatic code
