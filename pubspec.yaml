@@ -12,7 +12,7 @@ dependencies:
   cached_network_image: ^3.1.0
   dartz: ^0.10.0-nullsafety.2
   dio: ^4.0.0
-  flash: ^2.0.0
+  flash: ^2.0.1
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.0
@@ -24,7 +24,6 @@ dependencies:
   oauth2: ^2.0.0
   path: ^1.8.0
   path_provider: ^2.0.2
-  # sembast: ^3.1.0+2
   sembast: ^3.0.2
   shimmer: ^2.0.0
   webview_flutter: ^2.0.9
