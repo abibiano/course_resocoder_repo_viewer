@@ -19,9 +19,22 @@ class RepoTile extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
       ),
       leading: CircleAvatar(
-        backgroundImage: CachedNetworkImageProvider(repo.owner.avatarUrl),
+        backgroundImage: CachedNetworkImageProvider(repo.owner.avatarUrlSmall),
         backgroundColor: Colors.transparent,
       ),
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.star_border),
+          Text(
+            repo.stargazersCount.toString(),
+            style: Theme.of(context).textTheme.caption,
+          ),
+        ],
+      ),
+      onTap: () {
+        // TODO: Open the detail page
+      },
     );
   }
 }
