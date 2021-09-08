@@ -22,7 +22,7 @@ class FailureRepoTile extends ConsumerWidget {
         ),
         color: Theme.of(context).errorColor,
         child: ListTile(
-          title: Text('An error ocurred, please retry'),
+          title: const Text('An error ocurred, please retry'),
           subtitle: Text(
             failure.map(api: (_) => 'API returned ${_.errorCode}'),
             maxLines: 1,

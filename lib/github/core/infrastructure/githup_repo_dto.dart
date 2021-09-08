@@ -5,6 +5,7 @@ import 'package:resocoder_repo_viewer/github/core/infrastructure/user_dto.dart';
 part 'githup_repo_dto.freezed.dart';
 part 'githup_repo_dto.g.dart';
 
+// ignore_for_file: invalid_annotation_target
 @freezed
 class GithubRepoDTO with _$GithubRepoDTO {
   const GithubRepoDTO._();

@@ -4,6 +4,7 @@ import 'package:resocoder_repo_viewer/github/core/domain/user.dart';
 part 'user_dto.freezed.dart';
 part 'user_dto.g.dart';
 
+// ignore_for_file: invalid_annotation_target
 @freezed
 class UserDTO with _$UserDTO {
   const UserDTO._();

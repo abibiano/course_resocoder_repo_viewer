@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'auth_failure.dart';
 
@@ -39,6 +40,12 @@ mixin _$AuthFailure {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? server,
     TResult Function()? storage,
@@ -49,6 +56,12 @@ mixin _$AuthFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Server value) server,
     required TResult Function(_Storage value) storage,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Server value)? server,
+    TResult Function(_Storage value)? storage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -146,6 +159,15 @@ class _$_Server extends _Server {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+  }) {
+    return server?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? server,
     TResult Function()? storage,
@@ -164,6 +186,15 @@ class _$_Server extends _Server {
     required TResult Function(_Storage value) storage,
   }) {
     return server(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Server value)? server,
+    TResult Function(_Storage value)? storage,
+  }) {
+    return server?.call(this);
   }
 
   @override
@@ -234,6 +265,15 @@ class _$_Storage extends _Storage {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? message)? server,
+    TResult Function()? storage,
+  }) {
+    return storage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? server,
     TResult Function()? storage,
@@ -252,6 +292,15 @@ class _$_Storage extends _Storage {
     required TResult Function(_Storage value) storage,
   }) {
     return storage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Server value)? server,
+    TResult Function(_Storage value)? storage,
+  }) {
+    return storage?.call(this);
   }
 
   @override

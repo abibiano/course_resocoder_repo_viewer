@@ -15,7 +15,7 @@ Future<void> showNoConnectionToast(String message, BuildContext context) async {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             message,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
             ),

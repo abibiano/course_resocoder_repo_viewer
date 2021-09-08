@@ -33,7 +33,7 @@ class RepoTile extends StatelessWidget {
         ],
       ),
       onTap: () {
-        // TODO: Open the detail page
+        // TODO(abibiano): Open the detail page
       },
     );
   }

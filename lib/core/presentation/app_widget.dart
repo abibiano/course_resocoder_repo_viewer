@@ -26,6 +26,8 @@ final initializationProvider = FutureProvider<void>((ref) async {
 
 class AppWidget extends ConsumerWidget {
   final appRouter = AppRouter();
+
+  AppWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(initializationProvider, (_) {});
