@@ -9,6 +9,8 @@ import 'package:flutter/material.dart' as _i2;
 
 import '../../../auth/presentation/authorization_page.dart' as _i5;
 import '../../../auth/presentation/sign_in_page.dart' as _i4;
+import '../../../github/repos/searched_repos/presentation/searched_repos_page.dart'
+    as _i7;
 import '../../../github/repos/starred_repos/presentation/starred_repos_page.dart'
     as _i6;
 import '../../../splash/presentation/splash_page.dart' as _i3;
@@ -43,6 +45,13 @@ class AppRouter extends _i1.RootStackRouter {
         routeData: routeData,
         builder: (_) {
           return const _i6.StarredReposPage();
+        }),
+    SearchedReposRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
+        routeData: routeData,
+        builder: (data) {
+          final args = data.argsAs<SearchedReposRouteArgs>();
+          return _i7.SearchedReposPage(
+              key: args.key, searchTerm: args.searchTerm);
         })
   };
 
@@ -51,7 +60,8 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(SplashRoute.name, path: '/'),
         _i1.RouteConfig(SignInRoute.name, path: '/sign-in'),
         _i1.RouteConfig(AuthorizationRoute.name, path: '/auth'),
-        _i1.RouteConfig(StarredReposRoute.name, path: '/starred')
+        _i1.RouteConfig(StarredReposRoute.name, path: '/starred'),
+        _i1.RouteConfig(SearchedReposRoute.name, path: '/search')
       ];
 }
 
@@ -100,4 +110,21 @@ class StarredReposRoute extends _i1.PageRouteInfo {
   const StarredReposRoute() : super(name, path: '/starred');
 
   static const String name = 'StarredReposRoute';
+}
+
+class SearchedReposRoute extends _i1.PageRouteInfo<SearchedReposRouteArgs> {
+  SearchedReposRoute({_i2.Key? key, required String searchTerm})
+      : super(name,
+            path: '/search',
+            args: SearchedReposRouteArgs(key: key, searchTerm: searchTerm));
+
+  static const String name = 'SearchedReposRoute';
+}
+
+class SearchedReposRouteArgs {
+  const SearchedReposRouteArgs({this.key, required this.searchTerm});
+
+  final _i2.Key? key;
+
+  final String searchTerm;
 }
