@@ -14,7 +14,9 @@
     "**/build": true,
     ".flutter-plugins": true,
     ".flutter-plugins-dependencies": true,
-    ".packages": true
+    ".packages": true,
+    "**/.vscode": true,
+    "**/pubspec.lock": true
   },
   "cSpell.words": ["Repos", "resocoder"],
   "explorerExclude.backup": null

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:resocoder_repo_viewer/core/presentation/toasts.dart';
 import 'package:resocoder_repo_viewer/github/core/presentation/no_results_display.dart';
 import 'package:resocoder_repo_viewer/github/repos/core/application/paginated_repos_notifier.dart';
@@ -9,8 +11,9 @@ import 'failure_repo_tile.dart';
 import 'loading_repo_tile.dart';
 
 class PaginatedReposListView extends StatefulWidget {
-  final AutoDisposeStateNotifierProvider<PaginatedReposNotifier,
-      PaginatedReposState> paginatedReposNotifierProvider;
+  // TODO Change StateNotifierProvider to Autodispose
+  final StateNotifierProvider<PaginatedReposNotifier, PaginatedReposState>
+      paginatedReposNotifierProvider;
 
   final void Function(WidgetRef ref) getNextPage;
   final String noResultMessage;
@@ -89,7 +92,13 @@ class _PaginatedListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fsb = FloatingSearchBar.of(context)?.widget;
     return ListView.builder(
+      padding: fsb == null
+          ? EdgeInsets.zero
+          : EdgeInsets.only(
+              top: fsb.height + 8 + MediaQuery.of(context).padding.top,
+            ),
       itemCount: state.map(
         initial: (_) => 0,
         loadInProgress: (_) => _.repos.entity.length + _.itemsPerPage,
