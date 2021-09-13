@@ -16,7 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.0
-  flutter_riverpod: ^1.0.0-dev.5
+  flutter_riverpod: ^1.0.0-dev.7
   flutter_secure_storage: ^4.2.0
   freezed_annotation: ^0.14.2
   json_annotation: ^4.0.1
@@ -25,9 +25,9 @@ dependencies:
   oauth2: ^2.0.0
   path: ^1.8.0
   path_provider: ^2.0.2
-  sembast: ^3.0.2
+  sembast: ^3.1.0
   shimmer: ^2.0.0
-  webview_flutter: ^2.0.9
+  webview_flutter: ^2.0.13
 
 dev_dependencies:
   auto_route_generator: ^2.1.0
