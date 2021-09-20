@@ -11,9 +11,8 @@ import 'failure_repo_tile.dart';
 import 'loading_repo_tile.dart';
 
 class PaginatedReposListView extends StatefulWidget {
-  // TODO Change StateNotifierProvider to Autodispose
-  final StateNotifierProvider<PaginatedReposNotifier, PaginatedReposState>
-      paginatedReposNotifierProvider;
+  final AutoDisposeStateNotifierProvider<PaginatedReposNotifier,
+      PaginatedReposState> paginatedReposNotifierProvider;
 
   final void Function(WidgetRef ref) getNextPage;
   final String noResultMessage;

@@ -21,38 +21,35 @@ class AppRouter extends _i1.RootStackRouter {
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
-    SplashRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i3.SplashPage();
-        }),
-    SignInRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i4.SignInPage();
-        }),
-    AuthorizationRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<AuthorizationRouteArgs>();
-          return _i5.AuthorizationPage(
+    SplashRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i3.SplashPage());
+    },
+    SignInRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i4.SignInPage());
+    },
+    AuthorizationRoute.name: (routeData) {
+      final args = routeData.argsAs<AuthorizationRouteArgs>();
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i5.AuthorizationPage(
               key: args.key,
               authorizationUrl: args.authorizationUrl,
               onAuthorizationCodeRedirectAttempt:
-                  args.onAuthorizationCodeRedirectAttempt);
-        }),
-    StarredReposRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i6.StarredReposPage();
-        }),
-    SearchedReposRoute.name: (routeData) => _i1.MaterialPageX<dynamic>(
-        routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<SearchedReposRouteArgs>();
-          return _i7.SearchedReposPage(
-              key: args.key, searchTerm: args.searchTerm);
-        })
+                  args.onAuthorizationCodeRedirectAttempt));
+    },
+    StarredReposRoute.name: (routeData) {
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i6.StarredReposPage());
+    },
+    SearchedReposRoute.name: (routeData) {
+      final args = routeData.argsAs<SearchedReposRouteArgs>();
+      return _i1.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i7.SearchedReposPage(
+              key: args.key, searchTerm: args.searchTerm));
+    }
   };
 
   @override
@@ -65,13 +62,13 @@ class AppRouter extends _i1.RootStackRouter {
       ];
 }
 
-class SplashRoute extends _i1.PageRouteInfo {
+class SplashRoute extends _i1.PageRouteInfo<void> {
   const SplashRoute() : super(name, path: '/');
 
   static const String name = 'SplashRoute';
 }
 
-class SignInRoute extends _i1.PageRouteInfo {
+class SignInRoute extends _i1.PageRouteInfo<void> {
   const SignInRoute() : super(name, path: '/sign-in');
 
   static const String name = 'SignInRoute';
@@ -106,7 +103,7 @@ class AuthorizationRouteArgs {
   final void Function(Uri) onAuthorizationCodeRedirectAttempt;
 }
 
-class StarredReposRoute extends _i1.PageRouteInfo {
+class StarredReposRoute extends _i1.PageRouteInfo<void> {
   const StarredReposRoute() : super(name, path: '/starred');
 
   static const String name = 'StarredReposRoute';
