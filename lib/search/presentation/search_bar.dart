@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
@@ -42,6 +43,22 @@ class _SearchBarState extends ConsumerState<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
+    void pushPageAndPutFirstInHistory(String searchTerm) {
+      widget.onShouldNavigateToResultPage(searchTerm);
+      ref
+          .read(searchHistoryNotifierProvider.notifier)
+          .putSearchTermFirst(searchTerm);
+      _controller.close();
+    }
+
+    void pushPageAndAddToHistory(String searchTerm) {
+      widget.onShouldNavigateToResultPage(searchTerm);
+      ref
+          .read(searchHistoryNotifierProvider.notifier)
+          .addSearchTerm(searchTerm);
+      _controller.close();
+    }
+
     return FloatingSearchBar(
       controller: _controller,
       body: FloatingSearchBarScrollNotifier(child: widget.body),
@@ -75,34 +92,77 @@ class _SearchBarState extends ConsumerState<SearchBar> {
         )
       ],
       onSubmitted: (query) {
-        widget.onShouldNavigateToResultPage(query);
-        ref.read(searchHistoryNotifierProvider.notifier).addSearchTerm(query);
-        _controller.close();
+        pushPageAndAddToHistory(query);
+      },
+      onQueryChanged: (query) {
+        ref
+            .read(searchHistoryNotifierProvider.notifier)
+            .watchSearchTerms(filter: query);
       },
       builder: (BuildContext context, Animation<double> transition) {
-        return Consumer(
-          builder: (context, ref, child) {
-            final searchHistoryState = ref.watch(searchHistoryNotifierProvider);
-            return searchHistoryState.map(
-              data: (history) {
-                return Column(
-                  children: history.value
-                      .map(
-                        (term) => ListTile(
-                          title: Text(term),
-                        ),
-                      )
-                      .toList(),
-                );
-              },
-              loading: (_) => const ListTile(
-                title: LinearProgressIndicator(),
-              ),
-              error: (_) => ListTile(
-                title: Text('Very unexpected error ${_.error}'),
-              ),
-            );
-          },
+        return Material(
+          color: Theme.of(context).cardColor,
+          elevation: 4,
+          borderRadius: BorderRadius.circular(4),
+          clipBehavior: Clip.hardEdge,
+          child: Consumer(
+            builder: (context, ref, child) {
+              final searchHistoryState =
+                  ref.watch(searchHistoryNotifierProvider);
+              return searchHistoryState.map(
+                data: (history) {
+                  if (_controller.query.isEmpty && history.value.isEmpty) {
+                    return Container(
+                      height: 56,
+                      alignment: Alignment.center,
+                      child: Text('Start searching',
+                          style: Theme.of(context).textTheme.caption),
+                    );
+                  } else if (history.value.isEmpty) {
+                    return ListTile(
+                      title: Text(_controller.query),
+                      leading: const Icon(Icons.search),
+                      onTap: () {
+                        pushPageAndAddToHistory(_controller.query);
+                      },
+                    );
+                  }
+                  return Column(
+                    children: history.value
+                        .map(
+                          (term) => ListTile(
+                            title: Text(
+                              term,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            leading: const Icon(Icons.history),
+                            trailing: IconButton(
+                              icon: const Icon(Icons.clear),
+                              onPressed: () {
+                                ref
+                                    .read(
+                                        searchHistoryNotifierProvider.notifier)
+                                    .deleteSearchTerm(term);
+                              },
+                            ),
+                            onTap: () {
+                              pushPageAndPutFirstInHistory(term);
+                            },
+                          ),
+                        )
+                        .toList(),
+                  );
+                },
+                loading: (_) => const ListTile(
+                  title: LinearProgressIndicator(),
+                ),
+                error: (_) => ListTile(
+                  title: Text('Very unexpected error ${_.error}'),
+                ),
+              );
+            },
+          ),
         );
       },
     );
