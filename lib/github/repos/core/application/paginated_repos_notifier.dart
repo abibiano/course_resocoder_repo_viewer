@@ -36,6 +36,14 @@ class PaginatedReposNotifier extends StateNotifier<PaginatedReposState> {
   int _page = 1;
 
   @protected
+  void resetState() {
+    _page = 1;
+    // TODO Don't know why I have to comment this line
+    // SearchedReposNotifier.getFirstSearchedReposPage exists after I set the state
+    //state = PaginatedReposState.initial(Fresh.yes([]));
+  }
+
+  @protected
   Future<void> getNextPage(RepositoryGetter getter) async {
     state = PaginatedReposState.loadInProgress(
       state.repos,
