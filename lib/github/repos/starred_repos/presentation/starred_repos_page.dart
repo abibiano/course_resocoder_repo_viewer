@@ -18,7 +18,11 @@ class _StarredReposPageState extends ConsumerState<StarredReposPage> {
   @override
   void initState() {
     super.initState();
-    ref.read(starredReposNotifierProvider.notifier).getNextStarredReposPage();
+    Future.microtask(
+      () => ref
+          .read(starredReposNotifierProvider.notifier)
+          .getNextStarredReposPage(),
+    );
   }
 
   @override

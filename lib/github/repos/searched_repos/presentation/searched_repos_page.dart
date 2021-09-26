@@ -21,9 +21,16 @@ class _SearchedReposPageState extends ConsumerState<SearchedReposPage> {
   @override
   void initState() {
     super.initState();
-    ref.read(searchedReposNotifierProvider.notifier).getFirstSearchedReposPage(
-          widget.searchTerm,
-        );
+    Future.microtask(
+      () {
+        ref.refresh(searchedReposNotifierProvider);
+        ref
+            .read(searchedReposNotifierProvider.notifier)
+            .getNextSearchedReposPage(
+              widget.searchTerm,
+            );
+      },
+    );
   }
 
   @override
