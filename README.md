@@ -52,3 +52,9 @@ Save the CLIENT_ID and CLIENT_SECRET in a .env file (see .env.sample file as exa
 flutter pub run build_runner watch --delete-conflicting-outputs
 
 ```
+
+### Build App icons
+
+```sh
+flutter pub run flutter_launcher_icons:main
+```
