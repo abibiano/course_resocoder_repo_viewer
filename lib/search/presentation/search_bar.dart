@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -77,6 +80,26 @@ class _SearchBarState extends ConsumerState<SearchBar> {
         ],
       ),
       hint: widget.hint,
+      automaticallyImplyBackButton: false,
+      leadingActions: [
+        if (AutoRouter.of(context).canPopSelfOrChildren &&
+            (Platform.isIOS || Platform.isMacOS))
+          IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            splashRadius: 18,
+            onPressed: () {
+              AutoRouter.of(context).pop();
+            },
+          )
+        else if (AutoRouter.of(context).canPopSelfOrChildren)
+          IconButton(
+            icon: const Icon(Icons.arrow_back),
+            splashRadius: 18,
+            onPressed: () {
+              AutoRouter.of(context).pop();
+            },
+          )
+      ],
       actions: [
         FloatingSearchBarAction.searchToClear(
           showIfClosed: false,
