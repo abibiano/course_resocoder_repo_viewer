@@ -40,6 +40,10 @@ build_runner: ## Generates automatic code
 	@flutter pub run build_runner clean
 	@flutter pub run build_runner build --delete-conflicting-outputs
 
+get_pub: clean ## Getting pubspec dependencies
+	@echo "╠ Upgrading dependencies..."
+	@flutter pub get
+
 upgrade_pub: clean ## Upgrades pubspec dependencies
 	@echo "╠ Upgrading dependencies..."
 	@flutter pub upgrade --major-versions
@@ -59,7 +63,10 @@ run_dev_mobile: ## Runs the mobile application in dev
 	@echo "╠ Running the app"
 	@flutter run --flavor dev
 
-build_dev_mobile: clean create_icons build_runner run_unit
+build_ios_mobile: get_pub create_icons build_runner commit
 	@echo "╠  Building the app"
 	@flutter build ipa
+
+deploy_ios_mobile: build_ios_mobile
+	@open ./build/ios/archive/Runner.xcarchive
 	
