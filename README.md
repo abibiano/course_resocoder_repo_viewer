@@ -4,6 +4,8 @@ Production-grade project developed during the Reso Coder Academy Flutter Bootcam
 
 It's a mobile Github repository viewer
 
+More info at [Reso Coder](https://resocoder.com/fdb) or at [Reso Coder Academy](https://resocoder.academy)
+
 ![Screenshot](doc/screenshots/screenshot.png)
 
 ## How to Start
@@ -12,9 +14,7 @@ It's a mobile Github repository viewer
 
 Download or clone this repo by using the link below:
 
-```sh
-https://github.com/abibiano/course_resocoder_repo_viewer.git
-```
+<https://github.com/abibiano/course_resocoder_repo_viewer.git>
 
 **Step 2:**
 
@@ -40,21 +40,29 @@ flutter packages pub run build_runner watch
 
 **Step 4:**
 
-Create an Github OAuth App on Github Settings / Developer settings / OAuth Apps with <http://localhost:8080> as Homepage URL
+Create an Github OAuth App on **Github Settings|Developer settings|OAuth Apps** with <http://localhost:8080> as Homepage URL
 
 Save the CLIENT_ID and CLIENT_SECRET in a .env file (see .env.sample file as example)
 
 ## Code Snippets
 
-### Build automatic code
+### Upgrade pubspec.yaml
+
+```sh
+make upgrade
+
+```
+
+### Build iOS
+
+```sh
+make build_ios_mobile
+
+```
+
+### Build and watch automatic code generation
 
 ```sh
 flutter pub run build_runner watch --delete-conflicting-outputs
 
-```
-
-### Build App icons
-
-```sh
-flutter pub run flutter_launcher_icons:main
 ```
