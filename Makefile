@@ -55,13 +55,9 @@ commit: format lint run_unit
 	git add .
 	git commit
 
-run_dev_web: ## Runs the web application in dev
+run_mobile: ## Runs the mobile application in dev
 	@echo "╠ Running the app"
-	@flutter run -d chrome --dart-define=ENVIRONMENT=dev
-
-run_dev_mobile: ## Runs the mobile application in dev
-	@echo "╠ Running the app"
-	@flutter run --flavor dev
+	@flutter run
 
 build_ios_mobile: get_pub create_icons build_runner commit
 	@echo "╠  Building the app"
