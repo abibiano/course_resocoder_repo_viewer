@@ -147,22 +147,16 @@ class _$_GithubRepoDetail extends _GithubRepoDetail {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GithubRepoDetail &&
+        (other.runtimeType == runtimeType &&
+            other is _GithubRepoDetail &&
             (identical(other.fullName, fullName) ||
-                const DeepCollectionEquality()
-                    .equals(other.fullName, fullName)) &&
-            (identical(other.html, html) ||
-                const DeepCollectionEquality().equals(other.html, html)) &&
-            (identical(other.starred, starred) ||
-                const DeepCollectionEquality().equals(other.starred, starred)));
+                other.fullName == fullName) &&
+            (identical(other.html, html) || other.html == html) &&
+            (identical(other.starred, starred) || other.starred == starred));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(fullName) ^
-      const DeepCollectionEquality().hash(html) ^
-      const DeepCollectionEquality().hash(starred);
+  int get hashCode => Object.hash(runtimeType, fullName, html, starred);
 
   @JsonKey(ignore: true)
   @override
@@ -178,11 +172,11 @@ abstract class _GithubRepoDetail extends GithubRepoDetail {
   const _GithubRepoDetail._() : super._();
 
   @override
-  String get fullName => throw _privateConstructorUsedError;
+  String get fullName;
   @override
-  String get html => throw _privateConstructorUsedError;
+  String get html;
   @override
-  bool get starred => throw _privateConstructorUsedError;
+  bool get starred;
   @override
   @JsonKey(ignore: true)
   _$GithubRepoDetailCopyWith<_GithubRepoDetail> get copyWith =>

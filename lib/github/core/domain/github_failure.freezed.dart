@@ -145,15 +145,14 @@ class _$_Api extends _Api {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Api &&
+        (other.runtimeType == runtimeType &&
+            other is _Api &&
             (identical(other.errorCode, errorCode) ||
-                const DeepCollectionEquality()
-                    .equals(other.errorCode, errorCode)));
+                other.errorCode == errorCode));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(errorCode);
+  int get hashCode => Object.hash(runtimeType, errorCode);
 
   @JsonKey(ignore: true)
   @override
@@ -222,7 +221,7 @@ abstract class _Api extends GithubFailure {
   const _Api._() : super._();
 
   @override
-  int? get errorCode => throw _privateConstructorUsedError;
+  int? get errorCode;
   @override
   @JsonKey(ignore: true)
   _$ApiCopyWith<_Api> get copyWith => throw _privateConstructorUsedError;

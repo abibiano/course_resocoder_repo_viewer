@@ -30,7 +30,7 @@ class _$UserDTOTearOff {
     );
   }
 
-  UserDTO fromJson(Map<String, Object> json) {
+  UserDTO fromJson(Map<String, Object?> json) {
     return UserDTO.fromJson(json);
   }
 }
@@ -148,19 +148,15 @@ class _$_UserDTO extends _UserDTO {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UserDTO &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
+        (other.runtimeType == runtimeType &&
+            other is _UserDTO &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.avatarUrl, avatarUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.avatarUrl, avatarUrl)));
+                other.avatarUrl == avatarUrl));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(avatarUrl);
+  int get hashCode => Object.hash(runtimeType, name, avatarUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -183,10 +179,10 @@ abstract class _UserDTO extends UserDTO {
 
   @override
   @JsonKey(name: 'login')
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(name: 'avatar_url')
-  String get avatarUrl => throw _privateConstructorUsedError;
+  String get avatarUrl;
   @override
   @JsonKey(ignore: true)
   _$UserDTOCopyWith<_UserDTO> get copyWith =>

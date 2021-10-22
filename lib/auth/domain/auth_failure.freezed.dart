@@ -134,14 +134,13 @@ class _$_Server extends _Server {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Server &&
-            (identical(other.message, message) ||
-                const DeepCollectionEquality().equals(other.message, message)));
+        (other.runtimeType == runtimeType &&
+            other is _Server &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(message);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -215,7 +214,7 @@ abstract class _Server extends AuthFailure {
   const factory _Server([String? message]) = _$_Server;
   const _Server._() : super._();
 
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @JsonKey(ignore: true)
   _$ServerCopyWith<_Server> get copyWith => throw _privateConstructorUsedError;
 }
@@ -248,7 +247,8 @@ class _$_Storage extends _Storage {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Storage);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Storage);
   }
 
   @override

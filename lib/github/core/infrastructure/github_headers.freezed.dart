@@ -28,7 +28,7 @@ class _$GithubHeadersTearOff {
     );
   }
 
-  GithubHeaders fromJson(Map<String, Object> json) {
+  GithubHeaders fromJson(Map<String, Object?> json) {
     return GithubHeaders.fromJson(json);
   }
 }
@@ -158,18 +158,14 @@ class _$_GithubHeaders extends _GithubHeaders {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GithubHeaders &&
-            (identical(other.etag, etag) ||
-                const DeepCollectionEquality().equals(other.etag, etag)) &&
-            (identical(other.link, link) ||
-                const DeepCollectionEquality().equals(other.link, link)));
+        (other.runtimeType == runtimeType &&
+            other is _GithubHeaders &&
+            (identical(other.etag, etag) || other.etag == etag) &&
+            (identical(other.link, link) || other.link == link));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(etag) ^
-      const DeepCollectionEquality().hash(link);
+  int get hashCode => Object.hash(runtimeType, etag, link);
 
   @JsonKey(ignore: true)
   @override
@@ -191,9 +187,9 @@ abstract class _GithubHeaders extends GithubHeaders {
       _$_GithubHeaders.fromJson;
 
   @override
-  String? get etag => throw _privateConstructorUsedError;
+  String? get etag;
   @override
-  PaginationLink? get link => throw _privateConstructorUsedError;
+  PaginationLink? get link;
   @override
   @JsonKey(ignore: true)
   _$GithubHeadersCopyWith<_GithubHeaders> get copyWith =>
@@ -214,7 +210,7 @@ class _$PaginationLinkTearOff {
     );
   }
 
-  PaginationLink fromJson(Map<String, Object> json) {
+  PaginationLink fromJson(Map<String, Object?> json) {
     return PaginationLink.fromJson(json);
   }
 }
@@ -315,14 +311,13 @@ class _$_PaginationLink extends _PaginationLink {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PaginationLink &&
-            (identical(other.maxPage, maxPage) ||
-                const DeepCollectionEquality().equals(other.maxPage, maxPage)));
+        (other.runtimeType == runtimeType &&
+            other is _PaginationLink &&
+            (identical(other.maxPage, maxPage) || other.maxPage == maxPage));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(maxPage);
+  int get hashCode => Object.hash(runtimeType, maxPage);
 
   @JsonKey(ignore: true)
   @override
@@ -343,7 +338,7 @@ abstract class _PaginationLink extends PaginationLink {
       _$_PaginationLink.fromJson;
 
   @override
-  int get maxPage => throw _privateConstructorUsedError;
+  int get maxPage;
   @override
   @JsonKey(ignore: true)
   _$PaginationLinkCopyWith<_PaginationLink> get copyWith =>
