@@ -42,7 +42,7 @@ class _RepoDetailPageState extends ConsumerState<RepoDetailPage> {
 
     ref.listen<RepoDetailState>(
       repoDetailNotifierProvider,
-      (state) {
+      (previous, state) {
         state.maybeWhen(
           orElse: () {},
           loadSuccess: (repoDetail, _) {
