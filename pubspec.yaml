@@ -10,13 +10,13 @@ environment:
 dependencies:
   auto_route: ^3.0.4
   cached_network_image: ^3.1.0+1
-  dartz: ^0.10.0-nullsafety.2
+  dartz: ^0.10.0
   dio: ^4.0.1
   flash: ^2.0.3
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.2
-  flutter_riverpod: ^1.0.0-dev.11
+  flutter_riverpod: ^1.0.0
   flutter_secure_storage: 5.0.0-beta.5
   freezed_annotation: ^0.15.0
   json_annotation: ^4.3.0
@@ -27,7 +27,7 @@ dependencies:
   path: ^1.8.0
   sembast: ^3.1.1
   shimmer: ^2.0.0
-  webview_flutter: ^2.1.2
+  webview_flutter: ^2.3.0
   url_launcher: ^6.0.12
 
 dev_dependencies:

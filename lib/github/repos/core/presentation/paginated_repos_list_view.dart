@@ -38,7 +38,7 @@ class _PaginatedReposListViewState extends State<PaginatedReposListView> {
       builder: (context, ref, chield) {
         ref.listen<PaginatedReposState>(
           widget.paginatedReposNotifierProvider,
-          (state) {
+          (previous, state) {
             state.map(
               initial: (_) => canLoadNextPage = true,
               loadInProgress: (_) => canLoadNextPage = false,

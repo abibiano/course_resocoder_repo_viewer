@@ -30,8 +30,9 @@ class AppWidget extends ConsumerWidget {
   AppWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen(initializationProvider, (_) {});
-    ref.listen<AuthState>(authNotifierProvider, (state) {
+    ref.listen(initializationProvider, (previous, _) {});
+
+    ref.listen<AuthState>(authNotifierProvider, (previous, state) {
       state.maybeMap(
         orElse: () {},
         authenticated: (_) {
