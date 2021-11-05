@@ -34,7 +34,6 @@ class RepoDetailRepository {
     try {
       final htmlRemoteResponse =
           await _remoteService.getReadmeHtml(fullRepoName);
-
       return right(
         await htmlRemoteResponse.when(
           noConnection: () async => Fresh.no(
@@ -56,7 +55,7 @@ class RepoDetailRepository {
               html: html,
               starred: starred ?? false,
             );
-            await _localService.upsertRepoDetaul(dto);
+            await _localService.upsertRepoDetail(dto);
             return Fresh.yes(dto.toDomain());
           },
         ),

@@ -51,8 +51,18 @@ class AppWidget extends ConsumerWidget {
 
     return MaterialApp.router(
       title: 'Resocoder Repo Viewer',
+      theme: _setUpThemeData(context),
       routerDelegate: appRouter.delegate(),
       routeInformationParser: appRouter.defaultRouteParser(),
+    );
+  }
+
+  ThemeData _setUpThemeData(BuildContext context) {
+    return ThemeData(
+      appBarTheme: AppBarTheme(
+        backgroundColor: Theme.of(context).cardColor,
+        foregroundColor: Theme.of(context).textTheme.headline6?.color,
+      ),
     );
   }
 }

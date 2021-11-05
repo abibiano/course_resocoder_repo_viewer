@@ -5,7 +5,7 @@ import 'package:resocoder_repo_viewer/github/core/domain/github_failure.dart';
 import 'package:resocoder_repo_viewer/github/detail/domain/github_repo_detail.dart';
 import 'package:resocoder_repo_viewer/github/detail/infrastructure/repo_detail_repository.dart';
 
-part 'repo_detail_notifer.freezed.dart';
+part 'repo_detail_notifier.freezed.dart';
 
 @freezed
 class RepoDetailState with _$RepoDetailState {
@@ -26,10 +26,10 @@ class RepoDetailState with _$RepoDetailState {
   }) = _LoadFailure;
 }
 
-class RepoDetailNotifer extends StateNotifier<RepoDetailState> {
+class RepoDetailNotifier extends StateNotifier<RepoDetailState> {
   final RepoDetailRepository _repository;
 
-  RepoDetailNotifer(this._repository) : super(const RepoDetailState.initial());
+  RepoDetailNotifier(this._repository) : super(const RepoDetailState.initial());
 
   Future<void> getRepoDetail(String fullRepoName) async {
     state = const RepoDetailState.loadInProgress();

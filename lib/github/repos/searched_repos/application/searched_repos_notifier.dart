@@ -6,6 +6,11 @@ class SearchedReposNotifier extends PaginatedReposNotifier {
 
   SearchedReposNotifier(this._repository);
 
+  Future<void> getFirstSearchedReposPage(String query) async {
+    super.resetState();
+    await getNextSearchedReposPage(query);
+  }
+
   Future<void> getNextSearchedReposPage(String query) async {
     super.getNextPage((page) => _repository.getSearchedReposPage(query, page));
   }

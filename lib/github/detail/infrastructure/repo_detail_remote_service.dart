@@ -39,14 +39,10 @@ class RepoDetailRemoteService {
         );
       } else if (response.statusCode == 200) {
         final headers = GithubHeaders.parse(response);
+
         await _headersCache.saveHeaders(requestUri, headers);
-
         final html = response.data as String;
-
-        return RemoteResponse.withNewData(
-          html,
-          maxPage: 0,
-        );
+        return RemoteResponse.withNewData(html, maxPage: 0);
       } else {
         throw RestApiException(response.statusCode);
       }

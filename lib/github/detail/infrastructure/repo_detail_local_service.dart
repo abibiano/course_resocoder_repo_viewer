@@ -13,10 +13,10 @@ class RepoDetailLocalService {
 
   RepoDetailLocalService(this._sembastDatabase, this._headersCache);
 
-  Future<void> upsertRepoDetaul(GithubRepoDetailDto githubRepoDetailDto) async {
+  Future<void> upsertRepoDetail(GithubRepoDetailDto githubRepoDetailDto) async {
     await _store.record(githubRepoDetailDto.fullName).put(
           _sembastDatabase.instance,
-          githubRepoDetailDto.toJson()..remove('fullName'),
+          githubRepoDetailDto.toSembast(),
         );
 
     final keys = await _store.findKeys(
@@ -34,7 +34,7 @@ class RepoDetailLocalService {
         await _headersCache.deleteHeaders(
           Uri.https(
             'api.github.com',
-            '/user/starred/$key',
+            '/repos/$key/readme',
           ),
         );
       }
@@ -52,6 +52,6 @@ class RepoDetailLocalService {
     if (recordSnapshot == null) {
       return null;
     }
-    GithubRepoDetailDto.fromSembast(recordSnapshot);
+    return GithubRepoDetailDto.fromSembast(recordSnapshot);
   }
 }

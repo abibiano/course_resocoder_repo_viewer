@@ -37,6 +37,6 @@ class GithubRepoDetailDto with _$GithubRepoDetailDto {
       RecordSnapshot<String, Map<String, dynamic>> snapshot) {
     final copiedMap = Map<String, dynamic>.from(snapshot.value);
     copiedMap['fullName'] = snapshot.key;
-    return GithubRepoDetailDto.fromJson(snapshot.value);
+    return GithubRepoDetailDto.fromJson(copiedMap);
   }
 }
